@@ -1,3 +1,4 @@
+// src/App.js
 import React from 'react';
 import KpiGrid from './components/KpiGrid';
 import './App.css';

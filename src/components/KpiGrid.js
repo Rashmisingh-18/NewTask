@@ -1,53 +1,36 @@
-import React, { useState } from 'react';
+// src/components/KpiGrid.js
+import React, { useEffect, useState } from 'react';
 import KpiCard from './KpiCard';
+import { getMetrics, getSegments } from '../api';
 import './KpiGrid.css';
 
 const KpiGrid = () => {
-    const [cards, setCards] = useState([
-        {
-            title: 'Daily Active Users, India',
-            value: '52.5K',
-            change: '+2.3%',
-            chartData: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-                datasets: [
-                    {
-                        label: 'Users',
-                        data: [50, 51, 52, 53, 54, 55, 56],
-                        borderColor: 'rgba(75,192,192,1)',
-                        fill: false,
-                    },
-                ],
-            },
-        },
-        {
-            title: 'Daily Active Users, Japan',
-            value: '12.5K',
-            change: '+1.5%',
-            chartData: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-                datasets: [
-                    {
-                        label: 'Users',
-                        data: [10, 11, 12, 13, 14, 15, 16],
-                        borderColor: 'rgba(153,102,255,1)',
-                        fill: false,
-                    },
-                ],
-            },
-        },
-    ]);
+    const [metrics, setMetrics] = useState([]);
+    const [segments, setSegments] = useState([]);
+
+    useEffect(() => {
+        const fetchMetricsAndSegments = async () => {
+            const fetchedMetrics = await getMetrics();
+            const fetchedSegments = await getSegments();
+            setMetrics(fetchedMetrics);
+            setSegments(fetchedSegments);
+        };
+        fetchMetricsAndSegments();
+    }, []);
 
     return (
         <div className="kpi-grid">
-            {cards.map((card, index) => (
-                <KpiCard
-                    key={index}
-                    title={card.title}
-                    value={card.value}
-                    change={card.change}
-                    chartData={card.chartData}
-                />
+            {metrics.map((metric) => (
+                segments.map((segment) =>
+                    segment.values.map((value) => (
+                        <KpiCard
+                            key={`${metric.id}-${segment.segmentKey}-${value.segmentId}`}
+                            metric={metric.id}
+                            segmentKey={segment.segmentKey}
+                            segmentId={value.segmentId}
+                        />
+                    ))
+                )
             ))}
         </div>
     );
