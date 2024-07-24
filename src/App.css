@@ -1,10 +1,7 @@
-.App {
-  text-align: center;
-}
-
-.kpi-container {
+.app {
   display: flex;
   justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
 }

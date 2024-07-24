@@ -1,0 +1,21 @@
+.kpi-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 10px;
+}
+
+.kpi-value {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.kpi-change {
+    color: green;
+}
+
+.kpi-chart {
+    height: 100px;
+}
