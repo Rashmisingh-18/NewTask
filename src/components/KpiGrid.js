@@ -1,7 +1,7 @@
 // src/components/KpiGrid.js
 import React, { useEffect, useState } from 'react';
 import KpiCard from './KpiCard';
-import { getMetrics, getSegments } from '../api';
+import { getMetrics, getSegments } from '../Api';
 import './KpiGrid.css';
 
 const KpiGrid = () => {

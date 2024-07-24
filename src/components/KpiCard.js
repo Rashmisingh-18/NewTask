@@ -1,7 +1,7 @@
 // src/components/KpiCard.js
 import React, { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
-import { getSnapshot } from '../api';
+import { getSnapshot } from '../Api';
 import './KpiCard.css';
 
 const KpiCard = ({ metric, segmentKey, segmentId }) => {
