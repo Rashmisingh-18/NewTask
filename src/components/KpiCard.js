@@ -1,8 +1,12 @@
 // src/components/KpiCard.js
 import React, { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
+import { Chart, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import { getSnapshot } from '../Api';
 import './KpiCard.css';
+
+// Register necessary Chart.js components
+Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 const KpiCard = ({ metric, segmentKey, segmentId }) => {
     const [data, setData] = useState(null);
