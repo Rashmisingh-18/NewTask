@@ -1,7 +1,78 @@
-.kpi-grid {
+/* src/components/KpiGrid.css */
+.kpi-grid-container {
+    position: relative;
+    padding: 16px;
+    box-sizing: border-box;
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-around;
-    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh; /* Ensure it takes at least the full height of the viewport */
+}
+
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    padding: 16px;
+    box-sizing: border-box;
+    width: 100%;
+    justify-content: start;
+}
+
+.add-card-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 1000;
+}
+
+.add-card-button:hover {
+    background-color: #0056b3;
+}
+
+.kpi-card {
+    background: #fff;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: transform 0.3s;
+}
+
+.kpi-card:hover {
+    transform: translateY(-5px);
+}
+
+.add-card {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    cursor: pointer;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.add-card.left {
+    left: -16px;
+}
+
+.add-card.right {
+    right: -16px;
 }
